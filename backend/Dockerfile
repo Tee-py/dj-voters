@@ -6,7 +6,11 @@ WORKDIR /app
 
 # Enable bytecode compilation
 ENV UV_COMPILE_BYTECODE=1
-ENV SECRET_KEY ""
+
+# demo env to make build work.
+ENV AWS_STORAGE_BUCKET_NAME="sweet-fool-xyz"
+ENV SECRET_KEY "LXnDgcFcF53SpyFw9aXnW7gOUITwd4EyqcvVXBPDqtLYxpo6R7"
+
 # Copy from the cache instead of linking since it's a mounted volume
 ENV UV_LINK_MODE=copy
 

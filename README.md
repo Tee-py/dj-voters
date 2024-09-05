@@ -4,6 +4,9 @@ Upload csv/excel file of voters and save voters in the db.
 
 ## Backend (Django)
 
+### Live Docs
+[https://dwst-task-backend.fly.dev/docs/](https://dwst-task-backend.fly.dev/docs/)
+
 ### Requirements
 
 - [uv](https://docs.astral.sh/uv/) - python and package manager
@@ -17,7 +20,8 @@ Upload csv/excel file of voters and save voters in the db.
 - PostgreSQL
 - Redis: Caching and task queues
 - Huey: Background task scheduling
-- Resend: Emails
+- S3: File uploads
+- [Plunk](https://www.useplunk.com/): Emails
 
 ### Setup and Running Locally
 
@@ -34,7 +38,7 @@ Upload csv/excel file of voters and save voters in the db.
 
 3. Ensure your local redis and postgres servers are running
 
-4. Register on [resend](https://resend.com/) and generate an API key
+4. Register on [useplunk](https://www.useplunk.com/) and generate an API key
 
 5. create an `.env.local` with contents mentioned in [`.env.example`](/backend/.env.example) file
 
@@ -56,6 +60,9 @@ Upload csv/excel file of voters and save voters in the db.
 The backend should now be running on [`http://localhost:8000`](http://localhost:8000) and the docs can be accessed at [`http://localhost:8000/docs`](http://localhost:8000/docs)
 
 ## Frontend (React)
+
+### Live Url
+[https://dwst-task.vercel.app/](https://dwst-task.vercel.app/)
 
 ### Requirements
 

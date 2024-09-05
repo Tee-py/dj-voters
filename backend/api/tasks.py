@@ -127,9 +127,9 @@ def process_upload(upload_id: str):
 
 
 @task()
-def send_email(to: str | list[str], subject: str, html: str) -> dict:
+def send_email(to: str, subject: str, html: str) -> dict:
     """
-    Send an email using the Resend API.
+    Send an email using the Plunk API.
 
     Args:
         to (str or list): The recipient's email address(es).
@@ -138,14 +138,13 @@ def send_email(to: str | list[str], subject: str, html: str) -> dict:
     """
     logger.info(f'Sending email to {to} with subject: {subject}')
 
-    url = 'https://api.resend.com/emails'
-    headers = {'Authorization': f'Bearer {settings.RESEND_API_KEY}', 'Content-Type': 'application/json'}
+    url = 'https://api.useplunk.com/v1/send'
+    headers = {'Authorization': f'Bearer {settings.PLUNK_API_KEY}', 'Content-Type': 'application/json'}
 
     payload = {
-        'from': 'DWST-Task <onboarding@resend.dev>',
-        'to': to if isinstance(to, list) else [to],
         'subject': subject,
-        'html': html,
+        'body': html,
+        'to': to,
     }
 
     try:

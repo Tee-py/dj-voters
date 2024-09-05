@@ -157,6 +157,8 @@ MEDIA_URL = 'mediafiles/'
 
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
+AWS_STORAGE_BUCKET_NAME = env.str('AWS_STORAGE_BUCKET_NAME')
+
 
 # ==============================================================================
 # SECURITY
@@ -214,7 +216,7 @@ JWT_AUTH = {
 # ==============================================================================
 # RESEND SETTINGS
 # ==============================================================================
-RESEND_API_KEY = env.str('RESEND_API_KEY')
+PLUNK_API_KEY = env.str('PLUNK_API_KEY')
 
 
 # ==============================================================================

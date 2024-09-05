@@ -99,10 +99,6 @@ function VotersDashboard() {
                       <StatusBadge status={upload.status} />
                     </div>
                     <Progress value={(upload.processed_records / upload.total_records) * 100} className="h-2 mb-2" />
-                    <div className="flex justify-between text-sm text-gray-500">
-                      <span>Processed: {upload.processed_records.toLocaleString()}</span>
-                      <span>Total: {upload.total_records ? upload.total_records.toLocaleString() : 0}</span>
-                    </div>
                     {upload.status === 'failed' && upload.reason && (
                       <div className="mt-2 p-2 bg-red-50 border border-red-200 rounded-md">
                         <p className="text-sm text-red-800 flex items-center">
