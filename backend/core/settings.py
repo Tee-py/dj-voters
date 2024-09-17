@@ -99,13 +99,13 @@ TEMPLATES = [
 STORAGES = {
     'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage'},
     'default': {
-        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        'BACKEND': 'django.core.files.storage.FileSystemStorage' if DEBUG else 'storages.backends.s3.S3Storage',
     },
 }
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 20_971_520  # 20MB
 
-FILE_UPLOAD_MAX_MEMORY_SIZE = 5_242_880 # 5MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5_242_880  # 5MB
 
 DATA_UPLOAD_MAX_NUMBER_FILES = 1
 

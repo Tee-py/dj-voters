@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { createLazyFileRoute, useNavigate } from '@tanstack/react-router';
 import { ArrowRight, CheckCircle, UserPlus, VoteIcon } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { type ReactNode, useEffect } from 'react';
 
 export const Route = createLazyFileRoute('/')({
   component: Index,
@@ -18,6 +18,14 @@ function FeatureItem({ icon, title }: { icon: ReactNode; title: string }) {
 
 function Index() {
   const navigate = useNavigate({ from: '/' });
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('access_token');
+    const refreshToken = localStorage.getItem('refresh_token');
+    if (accessToken && refreshToken) {
+      navigate({ to: '/dashboard' });
+    }
+  }, [navigate]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white px-4 py-16">

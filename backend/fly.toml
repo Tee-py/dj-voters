@@ -5,7 +5,7 @@
 
 app = 'dwst-task-backend'
 primary_region = 'lhr'
-console_command = '/code/manage.py shell'
+console_command = 'uv run manage.py shell'
 
 [build]
 
@@ -35,3 +35,7 @@ worker = "uv run manage.py run_huey"
 [[statics]]
   guest_path = '/code/static'
   url_prefix = '/static/'
+
+[mounts]
+  source = "dwst_vol"
+  destination = "/app/mediafiles"

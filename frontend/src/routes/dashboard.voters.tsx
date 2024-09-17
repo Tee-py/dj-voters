@@ -50,14 +50,15 @@ function VotersDashboard() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       refetchUploads();
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(intervalId);
   }, [refetchUploads]);
 
   const sortedUploads = uploadsData?.data.sort((a, b) => {
-    const order = ['processing', 'pending', 'failed', 'completed'];
-    return order.indexOf(a.status) - order.indexOf(b.status);
+    const dateA = new Date(a.created_at).getTime();
+    const dateB = new Date(b.created_at).getTime();
+    return dateA - dateB;
   });
 
   return (
