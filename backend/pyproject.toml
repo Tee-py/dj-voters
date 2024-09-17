@@ -5,8 +5,22 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "django-cors-headers>=4.4.0",
     "django>=5.1.1",
     "djangorestframework>=3.15.2",
+    "drf-yasg>=1.21.7",
+    "environs[django]>=11.0.0",
+    "gunicorn>=23.0.0",
+    "huey>=2.5.1",
+    "openpyxl>=3.1.5",
+    "pandas>=2.2.2",
+    "psycopg2-binary>=2.9.9",
+    "pyjwt>=2.9.0",
+    "redis>=5.0.8",
+    "requests>=2.32.3",
+    "setuptools>=75.1.0",
+    "shortuuid>=1.0.13",
+    "whitenoise>=6.7.0",
 ]
 
 [tool.uv]
@@ -14,4 +28,73 @@ dev-dependencies = [
     "pytest>=8.3.3",
     "pytest-django>=4.9.0",
     "ruff>=0.6.5",
+    "faker>=28.4.1",
 ]
+
+[tool.ruff]
+line-length = 119
+
+[tool.ruff.format]
+quote-style = "single"
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "W",
+    "F",
+    "UP",
+    "B",
+    "SIM",
+    "I",
+    "N",
+    "ASYNC",
+    "S",
+    "BLE",
+    "FBT",
+    "A",
+    "COM",
+    "C4",
+    "DTZ",
+    "DJ",
+    "EM",
+    "EXE",
+    "ISC",
+    "ICN",
+    "LOG",
+    "G",
+    "INP",
+    "PIE",
+    "T20",
+    "PYI",
+    "PT",
+    "RSE",
+    "RET",
+    "SLF",
+    "TID",
+    "TCH",
+    "ARG",
+    "PTH",
+    "PL",
+    "TRY",
+    "FLY",
+    "PERF",
+    "FURB",
+    "RUF",
+]
+ignore = ["COM812", "ISC001", "DJ008", "PLR0913", "PLR2004", "RUF012", "ARG002", "G004", "TRY301"]
+
+[tool.ruff.lint.isort]
+length-sort = true
+combine-as-imports = true
+length-sort-straight = true
+section-order = ["future", "standard-library", "third-party","django", "restframework", "core", "api", "first-party", "local-folder"]
+
+[tool.ruff.lint.isort.sections]
+"api" = ["api"]
+"core" = ["core"]
+"django" = ["django"]
+"restframework" = ["rest_framework", "drf_yasg"]
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 120

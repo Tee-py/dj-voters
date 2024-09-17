@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.response import Response
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from rest_framework.permissions import IsAuthenticated
 
 from .tasks import send_email
@@ -15,8 +16,17 @@ from .models import Admin, Voter, VoterUpload
 from .serializers import VoterSerializer, VerifyOTPSerializer, RequestOTPSerializer, VoterUploadSerializer
 
 
+class UserOnePerMinuteThrottle(UserRateThrottle):
+    rate = '1/minute'
+
+
+class AnonOnePerMinuteThrottle(AnonRateThrottle):
+    rate = '1/minute'
+
+
 class RequestOtpAPIView(GenericAPIView):
     serializer_class = RequestOTPSerializer
+    throttle_classes = [UserOnePerMinuteThrottle, AnonOnePerMinuteThrottle]
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
