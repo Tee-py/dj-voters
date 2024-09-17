@@ -53,7 +53,7 @@ Upload csv/excel file of voters and save voters in the db.
    make consumer
    ```
 
-The backend should now be running on `http://localhost:8000` and the docs can be accessed at `http://localhost:8000/docs`
+The backend should now be running on [`http://localhost:8000`](http://localhost:8000) and the docs can be accessed at [`http://localhost:8000/docs`](http://localhost:8000/docs)
 
 ## Frontend (React)
 
