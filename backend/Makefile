@@ -15,6 +15,12 @@ lint-fix:
 format:
 	@uv run ruff format $(LINT_PATHS)
 
+make-migrations:
+	@uv run manage.py migrate
+
+migrate:
+	@uv run manage.py migrate
+
 dev:
 	@uv run manage.py runserver
 
